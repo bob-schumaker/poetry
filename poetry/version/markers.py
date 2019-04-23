@@ -651,7 +651,7 @@ class MarkerUnion(BaseMarker):
             if m.validate(environment):
                 return True
 
-        return False
+        return not self._markers
 
     def without_extras(self):
         return self.exclude("extra")
