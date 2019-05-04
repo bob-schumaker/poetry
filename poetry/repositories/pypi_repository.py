@@ -467,14 +467,6 @@ class PyPiRepository(Repository):
                 # Pick the first wheel available and hope for the best
                 return self._get_info_from_wheel(platform_specific_wheels[0])
 
-            if not urls["sdist"]:
-                # We don't have both wheels, a universal or a source dist, if
-                # we have at least one of these, pick something.
-                if universal_python2_wheel:
-                    return self._get_info_from_wheel(universal_python2_wheel)
-                elif universal_python3_wheel:
-                    return self._get_info_from_wheel(universal_python3_wheel)
-
         return self._get_info_from_sdist(urls["sdist"][0])
 
     def _get_info_from_wheel(
