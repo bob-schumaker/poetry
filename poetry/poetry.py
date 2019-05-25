@@ -17,7 +17,7 @@ from .repositories import Pool
 from .repositories.auth import Auth
 from .repositories.legacy_repository import LegacyRepository
 from .repositories.pypi_repository import PyPiRepository
-from .semver import parse_single_constraint
+from .semver import parse_constraint
 from .semver.version import Version
 from .spdx import license_by_id
 from .utils.env import Env
@@ -158,7 +158,7 @@ class Poetry:
                     constraint = [constraint]
                 for _constraint in constraint:
                     if "python" in _constraint:
-                        python_constraint = parse_single_constraint(
+                        python_constraint = parse_constraint(
                             _constraint["python"]
                         )
                         if not python_constraint.allows(env_python_version):
