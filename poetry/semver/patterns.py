@@ -20,3 +20,4 @@ X_CONSTRAINT = re.compile(r"^(!=|==)?\s*v?(\d+)(?:\.(\d+))?(?:\.(\d+))?(?:\.[xX*
 BASIC_CONSTRAINT = re.compile(
     r"(?i)^(<>|!=|>=?|<=?|==?)?\s*({}|dev)".format(_COMPLETE_VERSION)
 )
+BROKEN_EMPTY_CONSTRAINT = re.compile("<empty>")

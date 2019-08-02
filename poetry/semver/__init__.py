@@ -2,6 +2,7 @@ import re
 
 from .empty_constraint import EmptyConstraint
 from .patterns import BASIC_CONSTRAINT
+from .patterns import BROKEN_EMPTY_CONSTRAINT
 from .patterns import CARET_CONSTRAINT
 from .patterns import TILDE_CONSTRAINT
 from .patterns import TILDE_PEP440_CONSTRAINT
@@ -47,6 +48,10 @@ def parse_constraint(constraints):  # type: (str) -> VersionConstraint
 
 def parse_single_constraint(constraint):  # type: (str) -> VersionConstraint
     m = re.match(r"(?i)^v?[xX*](\.[xX*])*$", constraint)
+    if m:
+        return VersionRange()
+
+    m = BROKEN_EMPTY_CONSTRAINT.match(constraint)
     if m:
         return VersionRange()
 
