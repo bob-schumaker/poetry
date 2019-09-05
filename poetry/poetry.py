@@ -12,7 +12,7 @@ from .repositories.pypi_repository import PyPiRepository
 from .semver import parse_constraint
 from .semver.version import Version
 from .spdx import license_by_id
-from .utils.env import Env
+from .utils.env import EnvManager
 from .utils._compat import Path
 from .utils.toml_file import TomlFile
 
@@ -126,7 +126,7 @@ class Poetry:
                 package.add_dependency(name, constraint)
 
         if "dev-dependencies" in local_config:
-            env = Env.get(Path(cwd)).get_marker_env()
+            env = EnvManager().get(Path(cwd)).get_marker_env()
             env_python_version = Version.parse(env["python_version"])
             for name, constraint in local_config["dev-dependencies"].items():
                 if not isinstance(constraint, list):
