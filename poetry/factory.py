@@ -19,8 +19,11 @@ from .packages.locker import Locker
 from .packages.project_package import ProjectPackage
 from .poetry import Poetry
 from .repositories.pypi_repository import PyPiRepository
+from .semver import parse_constraint
+from .semver.version import Version
 from .spdx import license_by_id
 from .utils._compat import Path
+from .utils.env import VirtualEnv
 from .utils.toml_file import TomlFile
 
 
@@ -99,14 +102,17 @@ class Factory:
                 package.add_dependency(name, constraint)
 
         if "dev-dependencies" in local_config:
+            env = VirtualEnv(Path(cwd)).get_marker_env()
+            env_python_version = Version.parse(env["python_version"])
             for name, constraint in local_config["dev-dependencies"].items():
-                if isinstance(constraint, list):
-                    for _constraint in constraint:
-                        package.add_dependency(name, _constraint, category="dev")
-
-                    continue
-
-                package.add_dependency(name, constraint, category="dev")
+                if not isinstance(constraint, list):
+                    constraint = [constraint]
+                for _constraint in constraint:
+                    if "python" in _constraint:
+                        python_constraint = parse_constraint(_constraint["python"])
+                        if not python_constraint.allows(env_python_version):
+                            continue
+                    package.add_dependency(name, _constraint, category="dev")
 
         extras = local_config.get("extras", {})
         for extra_name, requirements in extras.items():
