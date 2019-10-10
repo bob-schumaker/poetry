@@ -1,8 +1,14 @@
 import pytest
 
+<<<<<<< HEAD
 from poetry.packages import Package
 from poetry.utils.extras import get_extra_package_names
 
+=======
+from poetry.utils.extras import get_extra_package_names
+
+from poetry.packages import Package
+>>>>>>> 134aef1... export: fix exporting extras sub-dependencies (#1294)
 
 _PACKAGE_FOO = Package("foo", "0.1.0")
 _PACKAGE_SPAM = Package("spam", "0.2.0")

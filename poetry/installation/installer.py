@@ -17,6 +17,7 @@ from poetry.repositories.installed_repository import InstalledRepository
 from poetry.semver import parse_constraint
 from poetry.utils.extras import get_extra_package_names
 from poetry.utils.helpers import canonicalize_name
+from poetry.utils.extras import get_extra_package_names
 
 from .base_installer import BaseInstaller
 from .pip_installer import PipInstaller
