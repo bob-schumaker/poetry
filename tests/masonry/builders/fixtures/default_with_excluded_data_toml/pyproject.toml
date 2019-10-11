@@ -11,9 +11,15 @@ readme = "README.rst"
 
 exclude = ["my_package/data/data1.txt"]
 
+<<<<<<< HEAD
 homepage = "https://python-poetry.org/"
 repository = "https://github.com/python-poetry/poetry"
 documentation = "https://python-poetry.org/docs"
+=======
+homepage = "https://poetry.eustace.io/"
+repository = "https://github.com/sdispater/poetry"
+documentation = "https://poetry.eustace.io/docs"
+>>>>>>> 3622f8e... * check if relative filename is in excluded file list (#1459)
 
 keywords = ["packaging", "dependency", "poetry"]
 
