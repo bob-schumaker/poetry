@@ -9,12 +9,20 @@ license = "MIT"
 
 readme = "README.rst"
 
+<<<<<<< HEAD
 exclude = ["**/data/", "**/*/item*"]
 include = ["my_package/data/data2.txt"]
 
 homepage = "https://python-poetry.org/"
 repository = "https://github.com/python-poetry/poetry"
 documentation = "https://python-poetry.org/docs"
+=======
+exclude = ["my_package/data/", "**/*/item*"]
+
+homepage = "https://poetry.eustace.io/"
+repository = "https://github.com/sdispater/poetry"
+documentation = "https://poetry.eustace.io/docs"
+>>>>>>> 3a39e5a... Exclude nested items (#784) (#1464)
 
 keywords = ["packaging", "dependency", "poetry"]
 
