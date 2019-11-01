@@ -1,11 +1,8 @@
-<<<<<<< HEAD
+from typing import Collection
 from typing import Iterator
 from typing import List
 from typing import Mapping
 from typing import Sequence
-=======
-from typing import Iterator, Mapping, Sequence
->>>>>>> 134aef1... export: fix exporting extras sub-dependencies (#1294)
 
 from poetry.packages import Package
 from poetry.utils.helpers import canonicalize_name
@@ -13,11 +10,7 @@ from poetry.utils.helpers import canonicalize_name
 
 def get_extra_package_names(
     packages,  # type: Sequence[Package]
-<<<<<<< HEAD
     extras,  # type: Mapping[str, List[str]]
-=======
-    extras,  # type: Mapping[str, Collection[str]]
->>>>>>> 134aef1... export: fix exporting extras sub-dependencies (#1294)
     extra_names,  # type: Sequence[str]
 ):  # type: (...) -> Iterator[str]
     """
