@@ -1,4 +1,3 @@
-from typing import Collection
 from typing import Iterator
 from typing import List
 from typing import Mapping
